@@ -11,6 +11,9 @@ const GlobalStyles = StyleSheet.create({
     paddingHorizontal: horizontalScale(20),
     flexWrap: "wrap",
   },
+  mb24: {
+    marginBottom: verticalScale(24),
+  }
 });
 
 export default GlobalStyles;

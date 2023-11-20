@@ -11,8 +11,7 @@ export default function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
         <NavigationContainer>
-          <MainNavigation />
-          
+          <MainNavigation />          
         </NavigationContainer>
       </PersistGate>
     </Provider>

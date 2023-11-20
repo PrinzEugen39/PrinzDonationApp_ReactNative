@@ -6,21 +6,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import {
-  useFonts,
-  Inter_100Thin as ib100,
-  Inter_200ExtraLight as ib200,
-  Inter_300Light as ib300,
-  Inter_400Regular as ib400,
-  Inter_500Medium as ib500,
-  Inter_600SemiBold as ib600,
-  Inter_700Bold as ib700,
-  Inter_800ExtraBold as ib800,
-  Inter_900Black as ib900,
-} from "@expo-google-fonts/inter";
-import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import GlobalStyles from "../../assets/styles/GlobalStyles";
@@ -42,8 +28,6 @@ import {
 } from "../../redux/reducers/Donation";
 import { Routes } from "../../navigation/routes";
 import { HomeProps } from "../../navigation/MainNavigation";
-
-SplashScreen.preventAutoHideAsync();
 
 const CATEGORY_PAGE_SIZE = 4;
 
@@ -88,31 +72,8 @@ export default function Home({ navigation }: HomeProps) {
     return items.slice(startIndex, endIndex);
   }
 
-  const [fontsLoaded, fontError] = useFonts({
-    ib100,
-    ib200,
-    ib300,
-    ib400,
-    ib500,
-    ib600,
-    ib700,
-    ib800,
-    ib900,
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) {
-    return null;
-  }
-
   return (
     <SafeAreaView
-      onLayout={onLayoutRootView}
       style={[
         GlobalStyles.rootContainer,
         GlobalStyles.flex,
